@@ -35,6 +35,24 @@ fi
 . "$HELPER"
 
 if [ $# -eq 0 ]; then
+# Default to sanitizing the vendor folder before extraction
+CLEAN_VENDOR=true
+
+while [ "$1" != "" ]; do
+    case $1 in
+        -n | --no-cleanup )     CLEAN_VENDOR=false
+                                ;;
+        -s | --section )        shift
+                                SECTION=$1
+                                CLEAN_VENDOR=false
+                                ;;
+        * )                     SRC=$1
+                                ;;
+    esac
+    shift
+done
+
+if [ -z "$SRC" ]; then
     SRC=adb
 else
     if [ $# -eq 1 ]; then
