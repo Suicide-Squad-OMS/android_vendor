@@ -180,7 +180,6 @@ PRODUCT_PACKAGES += \
 
 # Custom CM packages
 PRODUCT_PACKAGES += \
-    ResurrectionOTA \
     ResurrectionStats \
     Trebuchet \
     AudioFX \
